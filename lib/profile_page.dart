@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -33,6 +34,11 @@ class _ProfilePageState extends State<ProfilePage> {
       String imagePath =
           join(directory.path, '${DateTime.now().millisecondsSinceEpoch}.png');
       final File newImage = await image.copy(imagePath);
+
+      // SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('profile_image', imagePath);
+
       setState(() {
         _image = newImage;
       });
@@ -42,6 +48,22 @@ class _ProfilePageState extends State<ProfilePage> {
       );
     } catch (e) {
       print('Error saving image: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedImage();
+  }
+
+  Future<void> _loadSavedImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString('profile_image');
+    if (imagePath != null) {
+      setState(() {
+        _image = File(imagePath);
+      });
     }
   }
 
