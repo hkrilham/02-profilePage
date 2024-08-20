@@ -79,11 +79,14 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 60,
-                backgroundImage: _image == null
-                    ? const AssetImage('assets/image.png')
-                    : FileImage(_image!),
+              GestureDetector(
+                onTap: _pickImage,
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: _image == null
+                      ? const AssetImage('assets/image.png')
+                      : FileImage(_image!),
+                ),
               ),
               const SizedBox(height: 20),
               const TextField(
@@ -125,7 +128,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: _pickImage),
     );
   }
 }
