@@ -71,38 +71,56 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profie'),
+        title: const Text(
+          'Profie',
+          style: TextStyle(
+            fontSize: 29,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               GestureDetector(
                 onTap: _pickImage,
                 child: CircleAvatar(
-                  radius: 60,
+                  radius: 90,
                   backgroundImage: _image == null
                       ? const AssetImage('assets/image.png')
                       : FileImage(_image!),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Ilham',
+                  labelStyle: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                   hintText: "Name",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person_2),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(200)),
+                  ),
+                  prefixIcon: Icon(Icons.person_outlined),
                 ),
               ),
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
                   labelText: '26',
+                  labelStyle: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                   hintText: "Age",
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(200)),
+                  ),
                   prefixIcon: Icon(Icons.numbers),
                 ),
               ),
@@ -110,20 +128,36 @@ class _ProfilePageState extends State<ProfilePage> {
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Trincomalee',
+                  labelStyle: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                   hintText: 'Address',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.location_on_rounded),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(200)),
+                  ),
+                  prefixIcon: Icon(Icons.location_on_outlined),
                 ),
               ),
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Admin',
+                  labelStyle: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                   hintText: 'Roll',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.people),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(200)),
+                  ),
+                  prefixIcon: Icon(Icons.people_outline_outlined),
                 ),
               ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text("Save"),
+              )
             ],
           ),
         ),
