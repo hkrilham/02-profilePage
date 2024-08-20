@@ -162,6 +162,11 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          setState(() {});
+        },
+      ),
     );
   }
 }
